@@ -1,4 +1,4 @@
-package pl.konopka.myfilmweb.controller;
+package pl.konopka.myfilmweb.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,9 +15,9 @@ public class FilmController {
     FilmRepository filmRepository;
 
     @GetMapping("/film")
-    public String filmDetails (@RequestParam Long id, Model model){
+    public String filmDetails(@RequestParam Long id, Model model) {
         Movie movie = filmRepository.findById(id);
-        model.addAttribute("movie" , movie);
+        model.addAttribute("movie", movie);
         return "film";
     }
 }

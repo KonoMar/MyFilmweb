@@ -1,30 +1,27 @@
 package pl.konopka.myfilmweb.model;
 
-public class Movie {
+import java.util.ArrayList;
+import java.util.List;
 
-    private Long id;
+public class Movie {
     private String title;
     private String description;
     private String category;
     private int year;
     private String photo;
+    private Long id = 0L;
+    private List<Comment> comments = new ArrayList<>();
 
-
-    public Movie(Long id, String title, String description, String category, int year, String photo) {
-        this.id = id;
+    public Movie(String title, String description, String category, int year, String photo, Long id) {
         this.title = title;
         this.description = description;
         this.category = category;
         this.year = year;
         this.photo = photo;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
         this.id = id;
+    }
+
+    public Movie() {
     }
 
     public String getTitle() {
@@ -67,15 +64,32 @@ public class Movie {
         this.photo = photo;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
     @Override
     public String toString() {
         return "Movie{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
+                "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", category='" + category + '\'' +
                 ", year=" + year +
                 ", photo='" + photo + '\'' +
+                ", id=" + id +
+                ", comments=" + comments +
                 '}';
     }
 }

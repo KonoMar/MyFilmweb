@@ -1,17 +1,25 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>MyFilmweb</title>
+    <title>Filmueb</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
-<body>
+<body style="background-color: #ccb9c8">
+<div style="width: 999px; margin:auto">
+    <img src="banner.jpg"/>
+</div>
+<h3 style="color: #5900cc">Baza filmów:</h3>
 
-<h1>Filmueb</h1>
+<p th:each="elem: ${lista}">
+    <a th:href="${'/film?id=' + elem.id}"> <img th:src="'movie'+${elem.id}+'.jpg'" style="width:130px;height:95px;" th:hspace="50"/></a>
+    <a th:text="${elem.title}"></a>
+    <a th:href="${'/film?id=' + elem.id}" th:text="${elem.title}"></a>
+<td th:text="${elem.description}"></td>
+</p>
 
-<p>Nam euismod, arcu id tristique ornare, enim metus tempus velit, et porta libero nisi id turpis.
-    <br>
-    Etiam ligula erat, iaculis vitae velit non, semper feugiat urna. Sed vestibulum sagittis tellus in viverra. Nullam pretium vitae velit sit amet placerat. Nulla malesuada ex metus, eu laoreet tortor elementum quis. Nunc vitae tristique elit. Nunc eu ultricies magna. Integer mauris metus, gravida eget rhoncus quis, consectetur in risus. Pellentesque congue sit amet quam tempus dictum. Integer nec massa semper, tincidunt enim nec, pulvinar lacus. Vestibulum pretium quis lectus eget porttitor.
-    Suspendisse sodales risus eget tortor placerat rhoncus. Nam ut facilisis justo.</p>
+<form th:action="@{/addmovieform}">
+    <input type="submit" value="Dodaj film"/>
+</form>
 
 </body>
 

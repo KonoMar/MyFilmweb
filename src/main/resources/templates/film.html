@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>MyFilmweb</title>
+    <title>Filmueb</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-    <div>
-        <h1>Hello myFilmweb</h1>
-    </div>
-
+<div>
+    <h1>Filmueb</h1>
+</div>
 <p>
-    <a href="/">Powrót!</a>
+    <a href="/">Powrót do listy</a>
 </p>
-
-    <h2 th:text="${movie.title + ' (' + movie.year + ')'}" >Avatar (2009)</h2>
-    <p th:text="${movie.category}" >SF</p><br />
-    <div><img th:src="@{movie.photo}" style="width:300px;height:200px;" /></div><br />
-    Opis filmu: <p th:text="${movie.description}">Lorem ipsum</p><br />
+<h2 th:text="${movie.title + ' (' + movie.year + ')'}" >Avatar (2009)</h2>
+<p th:text="${movie.category}" >SF</p><br />
+<div><img th:src="${movie.photo}" style="width:300px;height:200px;" /></div><br />
+Opis filmu: <p th:text="${movie.description}">Jake, sparaliżowany były komandos, zostaje wysłany na planetę Pandora, gdzie zaprzyjaźnia się z lokalną społecznością i postanawia jej pomóc. </p><br />
+<p><h3>Komentarze: </h3></p>
+<p th:if="${movie.comments.isEmpty()}" th:text="'Ten film nie posiada jeszcze komentarzy'"></p>
+<div th:each="comment : ${movie.comments}">
+    <fieldset>
+        <legend th:text="'Autor: ' + ${comment.author}"/>
+        <h6 th:text="'Data: ' + ${comment.date}"/>
+        <h5 th:text="${comment.content}"/>
+    </fieldset>
+</div>
 </body>
 </html>
