@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MyFilmweb</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+    <div>
+        <h1>Hello myFilmweb</h1>
+    </div>
+
+<p>
+    <a href="/">Powrót!</a>
+</p>
+
+    <h2 th:text="${movie.title + ' (' + movie.year + ')'}" >Avatar (2009)</h2>
+    <p th:text="${movie.category}" >SF</p><br />
+    <div><img th:src="@{movie.photo}" style="width:300px;height:200px;" /></div><br />
+    Opis filmu: <p th:text="${movie.description}">Lorem ipsum</p><br />
+</body>
+</html>
