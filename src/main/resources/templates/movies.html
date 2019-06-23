@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header::head"></head>
+<body style="background: radial-gradient(circle, #585858, #383838)">
+<div th:replace="header :: header"></div>
+<div class="container-fluid" style="background-image:url('http://www.allwhitebackground.com/images/2/2271.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    display:block;
+    width:100%;
+    height:100%;
+    position:absolute;
+    overflow:auto;">
+
+    <h1 class="my-4" style="font-size: 80px; font-weight: normal; font-family: 'Droid Serif'; color: black">Lista filmów:</h1>
+
+    <div th:each="movie : ${lista}">
+        <div class="row">
+            <div class="col-md-2">
+                <a th:href="${'/movies/movie?id=' + movie.id}">
+                    <img class="img-responsive img-rounded img-fluid roounded mb-3 mb-md-0" th:src="'/images/' + ${movie.getPhoto()}" style="width: 300px; height: auto"/>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a style="color: black ;" th:href="${'/movies/movie?id=' + movie.id}"><h1 style="font-weight: bolder" th:text="${movie.title}"></h1></a>
+                <p style="font-size: 20px ;color: black; font-weight: bold" th:text="'Dodał: ' + ${movie.getAuthor().getUsername().toUpperCase()}"></p>
+                <p style="font-size: 20px ;color: black; font-weight: bold" th:text="'Rok wydania: '+ ${movie.getYear()}"></p>
+                <p style="font-size: 20px ;color: black; font-weight: bold" th:text="'Opis: '"></p>
+                <p style="font-size: 20px ;color: black" th:text="${movie.description}"></p>
+                <a class="btn btn-primary" th:href="${'/movies/movie?id=' + movie.id}">Zobacz pełny opis filmu</a>
+            </div>
+        </div>
+        <div>
+            &nbsp;
+        </div>
+    </div>
+
+    <div th:replace="pagination::pagination"></div>
+</div>
+
+<footer th:replace="footer::footer"/>
+</body>
+</html>

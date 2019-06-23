@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<div th:fragment="pagination">
+    <ul th:with="actPageNumber=${actualPageNumber}" class="pagination justify-content-center">
+        <li class="page-item">
+            <a th:if="${actualPageNumber} != 0" class="page-link" th:href="'/movies?page=' + ${actualPageNumber - 1}">
+                <span>Poprzednia</span>
+            </a>
+        </li>
+        <li class="page-item" th:classappend="${pageNumber eq actPageNumber}? active" th:each="pageNumber : ${#numbers.sequence(actPageNumber - 2, actPageNumber + 2)}">
+            <a th:if="${pageNumber} ge 0 and ${pageNumber} lt ${maxPageNumber}" class="page-link" th:href="'/movies?page=' + ${pageNumber}" th:text="${pageNumber + 1}"></a>
+        </li>
+        <li class="page-item">
+            <a th:if="${actualPageNumber} lt ${maxPageNumber - 1}" class="page-link" th:href="'/movies?page=' + ${actualPageNumber + 1}">
+                <span>Następna</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

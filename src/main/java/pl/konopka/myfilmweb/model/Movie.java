@@ -1,27 +1,52 @@
 package pl.konopka.myfilmweb.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
+@Entity
 public class Movie {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @Column(nullable = false)
     private String title;
     private String description;
-    private String category;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
     private int year;
     private String photo;
-    private Long id = 0L;
-    private List<Comment> comments = new ArrayList<>();
 
-    public Movie(String title, String description, String category, int year, String photo, Long id) {
+    @OneToMany(mappedBy = "movie")
+    private Set<Comment> comments;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id", nullable = false)
+    private User author;
+
+    public Movie(String title, String description, Category category, int year, String photo, Set<Comment> comments) {
         this.title = title;
         this.description = description;
         this.category = category;
         this.year = year;
         this.photo = photo;
-        this.id = id;
+        this.comments = comments;
     }
 
     public Movie() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -40,11 +65,11 @@ public class Movie {
         this.description = description;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
@@ -64,32 +89,25 @@ public class Movie {
         this.photo = photo;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public List<Comment> getComments() {
+    public Set<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(List<Comment> comments) {
+    public void setComments(Set<Comment> comments) {
         this.comments = comments;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
     @Override
     public String toString() {
-        return "Movie{" +
-                "title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", category='" + category + '\'' +
-                ", year=" + year +
-                ", photo='" + photo + '\'' +
-                ", id=" + id +
-                ", comments=" + comments +
-                '}';
+        return "Film nr: " + id + " Tytuł: " + title + " (" + year + "); opis: " + description + "; gatunek: " +
+                category;
     }
 }

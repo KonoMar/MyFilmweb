@@ -2,11 +2,9 @@ package pl.konopka.myfilmweb.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pl.konopka.myfilmweb.model.Movie;
+import pl.konopka.myfilmweb.model.Category;
 
 @Repository
-public interface FilmRepository extends JpaRepository<Movie , Long> {
-
-    public Movie findMovieByTitle(String title);
-
+public interface CategoryRepository extends JpaRepository<Category, Long> {
+    Category findById(Long id);
 }

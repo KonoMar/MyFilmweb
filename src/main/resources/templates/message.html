@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header::head"></head>
+<body>
+<h1 th:text="${title}">Błąd</h1>
+<p th:text="${message}">Coś poszło nie tak!</p>
+<a th:href="${link}">Powrót</a>
+</body>
+</html>

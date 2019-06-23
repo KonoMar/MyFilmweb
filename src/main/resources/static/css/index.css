@@ -1,0 +1,14 @@
+body {
+    /*background-color: #99CCCC;*/
+
+    background-image: url("background.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    display:block;
+    width:99%;
+    height:100%;
+    position:absolute;
+    overflow:auto;
+}

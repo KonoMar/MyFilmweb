@@ -1,26 +1,53 @@
 package pl.konopka.myfilmweb.model;
 
-import java.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
 public class Comment {
 
-    private String author;
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn (nullable = false)
+    private User author;
     private String content;
-    private LocalDate date;
+
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date date;
+
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
     private Movie movie;
 
-    public Comment(String author, String content, LocalDate date, Movie movie) {
+    public Comment() {
+    }
+
+    public Comment(User author, String content, Date date, Movie movie) {
         this.author = author;
         this.content = content;
         this.date = date;
         this.movie = movie;
     }
 
-    public String getAuthor() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 
@@ -32,11 +59,11 @@ public class Comment {
         this.content = content;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
