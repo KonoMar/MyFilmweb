@@ -6,7 +6,4 @@ import pl.konopka.myfilmweb.model.Movie;
 
 @Repository
 public interface FilmRepository extends JpaRepository<Movie , Long> {
-
-    public Movie findMovieByTitle(String title);
-
 }

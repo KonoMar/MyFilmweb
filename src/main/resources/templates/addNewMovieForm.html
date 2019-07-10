@@ -1,26 +1,35 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="header::head"></head>
-<body style="background: radial-gradient(circle, #585858, #383838)">
+<body style="background-image:url('http://www.allwhitebackground.com/images/2/2271.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    display:block;
+    width:100%;
+    height:100%;
+    position:absolute;
+    overflow:auto;">
 <div th:replace="header :: header"></div>
 <div class="container-fluid" style="margin-left: 25px">
 
-    <h1 align="center" class="my-4" style="font-size: 80px; font-weight: normal; font-family: 'Droid Serif'; color: #990000">Dodaj film</h1>
+    <h1 align="center" class="my-4" style="font-size: 80px; font-weight: normal; font-family: 'Droid Serif'; color: black">Dodaj film</h1>
 
     <form th:method="post" th:action="@{/movies/addMovie}" th:object="${movie}">
         <div class="form-group">
-            <h3 class="my-4" style="font-size: 30px; font-weight: normal; font-family: 'Droid Serif'; color: #990000">Tytuł filmu: </h3>
+            <h3 class="my-4" style="font-size: 30px; font-weight: normal; font-family: 'Droid Serif'; color: black">Tytuł filmu: </h3>
             <input type="text" class="form-control" placeholder="Podaj tytuł filmu" th:field="*{title}" required="required"/>
         </div>
         <div class="form-group">
-            <h3 class="my-4" style="font-size: 30px; font-weight: normal; font-family: 'Droid Serif'; color: #990000">Opis filmu: </h3>
+            <h3 class="my-4" style="font-size: 30px; font-weight: normal; font-family: 'Droid Serif'; color: black">Opis filmu: </h3>
             <textarea rows="10" class="form-control" placeholder="Podaj opis filmu" th:field="*{description}" required="required"/>
         </div>
         <div class="form-group">
-            <h3 class="my-4" style="font-size: 30px; font-weight: normal; font-family: 'Droid Serif'; color: #990000">Tytuł filmu: </h3>
+            <h3 class="my-4" style="font-size: 30px; font-weight: normal; font-family: 'Droid Serif'; color: black">Rok: </h3>
             <input type="number" class="form-control" placeholder="Podaj rok wydania filmu" th:field="*{year}" required="required"/>
         </div>
-        <h3 class="my-4" style="font-size: 30px; font-weight: normal; font-family: 'Droid Serif'; color: #990000">Wybierz kategorię: </h3>
+        <h3 class="my-4" style="font-size: 30px; font-weight: normal; font-family: 'Droid Serif'; color: black">Wybierz kategorię: </h3>
         <div style="margin-bottom: 30px">
             <select style="width: 25%" required="required" th:field="*{category}">
                 <option selected="selected" value="">WYBIERZ</option>

@@ -23,18 +23,17 @@ public class SearchController {
     }
 
     @GetMapping("/search")
-    public String searchByName(@RequestParam String movieName, Model model) {
-        List<Movie> allMovies = filmRepository.findAll();
+        public String searchByName(@RequestParam String movieName, Model model) {
+            List<Movie> allMovies = filmRepository.findAll();
 
-        List<Movie> foundMovies = allMovies
-                .stream()
-                .filter(movie -> (movie.getTitle().toLowerCase())
-                        .contains(movieName.toLowerCase()))
-                .collect(Collectors.toList());
+            List<Movie> foundMovies = allMovies.stream()
+                    .filter(movie -> (movie.getTitle().toLowerCase())
+                            .contains(movieName.toLowerCase()))
+                    .collect(Collectors.toList());
 
-        Logic logic = new Logic();
-        model.addAttribute("foundMovies", logic.CutString(foundMovies));
+            Logic logic = new Logic();
+            model.addAttribute("foundMovies", logic.CutString(foundMovies));
 
-        return "searchResult";
+            return "searchResult";
     }
 }

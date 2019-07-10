@@ -1,9 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="header::head"></head>
-<body style="background: radial-gradient(circle, #585858, #383838)">
-<div th:replace="header :: header"></div>
-<div class="container-fluid" style="background-image:url('http://www.allwhitebackground.com/images/2/2271.jpg');
+<body style="background-image:url('http://www.allwhitebackground.com/images/2/2271.jpg');
     background-repeat:no-repeat;
     background-size: cover;
     -moz-background-size: cover;
@@ -13,6 +11,8 @@
     height:100%;
     position:absolute;
     overflow:auto;">
+<div th:replace="header :: header"></div>
+<div class="container-fluid">
 
     <h1 class="my-4" style="font-size: 80px; font-weight: normal; font-family: 'Droid Serif'; color: black">Lista filmów:</h1>
 

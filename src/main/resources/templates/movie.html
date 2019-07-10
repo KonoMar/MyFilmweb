@@ -32,7 +32,7 @@
     </div>
 
 
-    <!--sekcja po okladką!-->
+    <!--sekcja pod okladką!-->
     <p style="color: black; font-size: 50px; font-weight: bold" th:text="'Opis: '"></p>
     <p style="font-size: 30px ;color: black" th:text="${movie.description}"></p>
 
@@ -40,7 +40,7 @@
         <p style="color: black; font-size: 50px; font-weight: bold" th:text="'Komentarze: '"></p>
 
         <div th:if="${#authorization.expression('isAuthenticated()')}" >
-            <p style="color: #990000; font-size: 25px; font-weight: bold" th:text="'Dodaj komentarz: '"></p>
+            <p style="color: darkblue; font-size: 25px; font-weight: bold" th:text="'Dodaj komentarz: '"></p>
             <form class="form-group" th:action="@{/movies/movie/addComment}" th:method="post" th:object="${newComment}">
                 <input th:type="hidden" name="userName" th:value="${#authentication.name}"/>
                 <input th:type="hidden" name= "movieId" th:value="${movie.getId()}"/>

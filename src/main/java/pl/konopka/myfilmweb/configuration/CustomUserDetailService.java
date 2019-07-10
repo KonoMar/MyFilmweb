@@ -31,8 +31,9 @@ public class CustomUserDetailService implements UserDetailsService {
         boolean isEnabled = userByUsername.isEnabled();
         Set<GrantedAuthority> grantedAuthorities = getGrantedAuthorities(userByUsername);
 
-        org.springframework.security.core.userdetails.User user = new org.springframework.security.core.userdetails.User(
-                username, password, isEnabled, true, true, true, grantedAuthorities);
+        org.springframework.security.core.userdetails.User user =
+                new org.springframework.security.core.userdetails.User(username, password, isEnabled,
+                        true, true, true, grantedAuthorities);
 
         return user;
     }
